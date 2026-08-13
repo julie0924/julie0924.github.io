@@ -163,8 +163,9 @@ h1{
 }
 .edu-line a,
 .lab-line a{ color: var(--signal-soft); }
-/* keep the two meta lines as one tight block under the badge */
-.edu-line + .lab-line{ margin-top: 0; }
+/* lines of the same kind stack tight; a new group gets the full margin */
+.edu-line + .edu-line,
+.lab-line + .lab-line{ margin-top: 0; }
 
 /* cta badge in header */
 .cta-badge{
@@ -203,19 +204,6 @@ section[id]{ scroll-margin-top: var(--nav-h); }
   margin: 0 0 18px;
 }
 .about-text:last-child{ margin-bottom: 0; }
-
-.draft-tag{
-  display: inline-block;
-  margin-top: 14px;
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--ink-faint);
-  border: 1px solid var(--rule);
-  padding: 3px 8px;
-  border-radius: 3px;
-}
 
 /* buttons */
 .btn{
@@ -482,7 +470,7 @@ footer{
   @page{ margin: 16mm 14mm; }
 
   body{ background: #fff; font-size: 11pt; line-height: 1.45; }
-  nav, footer, .skip-link, .page-actions, .draft-tag, .coming-soon,
+  nav, footer, .skip-link, .page-actions, .coming-soon,
   .figure-placeholder, .figure-caption{ display: none !important; }
 
   .js-reveal main section{
