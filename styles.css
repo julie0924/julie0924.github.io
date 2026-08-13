@@ -153,19 +153,21 @@ h1{
   color: var(--ink-faint);
   margin-top: 8px;
 }
-.edu-line,
-.lab-line{
+/* Masthead meta: the education pair, then the lab pair. Wrapped in one
+   container so the column gap on .masthead .wrap applies around the block
+   rather than between every line — the margins below are then the only
+   thing controlling grouping. */
+.masthead-meta{ margin-top: 8px; }
+.meta-line{
   font-size: 14px;
   color: var(--ink-soft);
-  margin-top: 14px;
-  margin-bottom: 0;
+  margin: 4px 0 0;
   max-width: 62ch;
 }
-.edu-line a,
-.lab-line a{ color: var(--signal-soft); }
-/* lines of the same kind stack tight; a new group gets the full margin */
-.edu-line + .edu-line,
-.lab-line + .lab-line{ margin-top: 0; }
+.meta-line:first-child{ margin-top: 0; }
+.meta-line a{ color: var(--signal-soft); }
+/* first line of a new group */
+.meta-line--group{ margin-top: 22px; }
 
 /* cta badge in header */
 .cta-badge{
