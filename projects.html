@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Julie Ji Young Hwang — Projects</title>
+<meta name="description" content="Projects by Julie Ji Young Hwang, systems neuroscientist and biomedical engineer." />
+<meta name="robots" content="noindex, nofollow" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a href="index.html" class="nav-cross">← Home</a>
+    <a href="#thesis">Thesis</a>
+    <a href="#side-project">Side project</a>
+    <a href="#hobby">Hobby</a>
+    <a href="cv.html" class="nav-cross">Full CV →</a>
+  </div>
+</nav>
+
+<header class="masthead">
+  <div class="wrap">
+    <h1>Julie Ji Young Hwang</h1>
+    <p class="role-line">Systems neuroscientist — social cognition in the primate medial temporal lobe</p>
+    <p class="location-line">Baltimore, Maryland, United States</p>
+    <span class="cta-badge">Seeking postdoctoral positions in learning, memory &amp; reinforcement learning</span>
+    <p class="lab-line">PhD Lab: <a href="https://www.hopkinsmedicine.org/research/labs/e/ed-connor-laboratory" target="_blank" rel="noopener">Ed Connor's Lab</a>, Zanvyl Krieger Mind/Brain Institute, JHU</p>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section id="thesis">
+    <p class="eyebrow">Thesis project</p>
+    <p class="project-block-title">Social cognition in the primate medial temporal lobe</p>
+    <p class="project-block-desc">
+      Doctoral research recording from the amygdala and entorhinal cortex while macaques view familiar and
+      unfamiliar groupmates, testing how these regions represent social relationships. Figures below are from
+      conference posters.
+      <span class="draft-tag">Draft — please edit</span>
+    </p>
+
+    <div class="figure-grid">
+      <div>
+        <div class="figure-placeholder">Add figure</div>
+        <p class="figure-caption">e.g., experimental setup or recording schematic</p>
+      </div>
+      <div>
+        <div class="figure-placeholder">Add figure</div>
+        <p class="figure-caption">e.g., population geometry / RSA results</p>
+      </div>
+      <div>
+        <div class="figure-placeholder">Add figure</div>
+        <p class="figure-caption">e.g., behavioral coding results</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="side-project">
+    <p class="eyebrow">Side project</p>
+    <p class="project-block-title">RNN model of social learning</p>
+    <p class="project-block-desc">
+      An independent computational neuroscience project applying recurrent neural network models. Write-up in
+      progress.
+    </p>
+    <span class="coming-soon">In progress</span>
+  </section>
+
+  <section id="hobby">
+    <p class="eyebrow">Hobby projects</p>
+    <p class="project-block-title">Video &amp; reel content</p>
+    <p class="project-block-desc">
+      Coming soon.
+    </p>
+    <span class="coming-soon">Coming soon</span>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>&copy; 2026 Julie Ji Young Hwang</p>
+  </div>
+</footer>
+
+<script>
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.querySelectorAll('section').forEach(function(el){ el.classList.add('reveal'); });
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+  }
+</script>
+
+</body>
+</html>
