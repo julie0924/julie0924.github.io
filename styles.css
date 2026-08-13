@@ -1,20 +1,46 @@
+/* ---------------------------------------------------------------
+   Julie Ji Young Hwang — site styles
+   tokens → base → layout → components → motion → print
+   --------------------------------------------------------------- */
+
 :root{
+  color-scheme: light dark;
+
   --paper: #FAF9F5;
   --paper-raised: #F3F1EA;
+  --nav-bg: rgba(250, 249, 245, 0.92);
   --ink: #1D1C19;
   --ink-soft: #58564D;
-  --ink-faint: #8B8878;
+  --ink-faint: #74715F;    /* was #8B8878 (3.4:1) — now 4.7:1 on paper, WCAG AA */
   --signal: #35507A;
-  --signal-soft: #6C86A8;
+  --signal-soft: #5C7196;  /* was #6C86A8 (3.6:1) — now 4.7:1 on paper, WCAG AA */
   --rule: #DEDACE;
   --tag-bg: #EFEDE4;
+
   --font-serif: 'Source Serif 4', Georgia, serif;
   --font-sans: 'IBM Plex Sans', -apple-system, sans-serif;
   --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
   --maxw: 700px;
+  --nav-h: 76px;
+}
+
+@media (prefers-color-scheme: dark){
+  :root{
+    --paper: #1A1916;
+    --paper-raised: #22211C;
+    --nav-bg: rgba(26, 25, 22, 0.92);
+    --ink: #EDEBE3;
+    --ink-soft: #B8B4A6;
+    --ink-faint: #918D7D;
+    --signal: #8FB0DA;
+    --signal-soft: #7E9BC0;
+    --rule: #33322B;
+    --tag-bg: #26251F;
+  }
 }
 
 *{ box-sizing: border-box; }
+[hidden]{ display: none !important; }
 html{ scroll-behavior: smooth; }
 @media (prefers-reduced-motion: reduce){ html{ scroll-behavior: auto; } }
 
@@ -33,6 +59,7 @@ a:hover{ text-decoration: underline; }
 a:focus-visible, button:focus-visible{
   outline: 2px solid var(--signal);
   outline-offset: 3px;
+  border-radius: 2px;
 }
 
 .wrap{
@@ -41,11 +68,28 @@ a:focus-visible, button:focus-visible{
   padding: 0 24px;
 }
 
+/* skip link */
+.skip-link{
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 100;
+  background: var(--signal);
+  color: var(--paper);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  padding: 10px 16px;
+}
+.skip-link:focus{
+  left: 0;
+  text-decoration: none;
+}
+
 /* nav */
 nav{
   position: sticky;
   top: 0;
-  background: rgba(250,249,245,0.92);
+  background: var(--nav-bg);
   backdrop-filter: blur(6px);
   border-bottom: 1px solid var(--rule);
   z-index: 10;
@@ -77,6 +121,14 @@ header.masthead .wrap{
   flex-direction: column;
   gap: 6px;
 }
+.page-label{
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin: 0;
+}
 h1{
   font-family: var(--font-serif);
   font-weight: 500;
@@ -101,22 +153,43 @@ h1{
   color: var(--ink-faint);
   margin-top: 8px;
 }
+.edu-line,
 .lab-line{
   font-size: 14px;
   color: var(--ink-soft);
   margin-top: 14px;
+  margin-bottom: 0;
+  max-width: 62ch;
 }
+.edu-line a,
 .lab-line a{ color: var(--signal-soft); }
+/* keep the two meta lines as one tight block under the badge */
+.edu-line + .lab-line{ margin-top: 0; }
+
+/* cta badge in header */
+.cta-badge{
+  display: inline-block;
+  margin-top: 16px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: var(--signal);
+  border: 1px solid var(--signal-soft);
+  padding: 6px 12px;
+  border-radius: 3px;
+}
 
 section{
   padding: 48px 0;
   border-bottom: 1px solid var(--rule);
 }
 section:last-of-type{ border-bottom: none; }
+section[id]{ scroll-margin-top: var(--nav-h); }
 
 .eyebrow{
   font-family: var(--font-mono);
   font-size: 12px;
+  font-weight: 500;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--ink-faint);
@@ -127,8 +200,11 @@ section:last-of-type{ border-bottom: none; }
   font-size: 17px;
   max-width: 60ch;
   color: var(--ink);
+  margin: 0 0 18px;
 }
-.about-text .draft-tag{
+.about-text:last-child{ margin-bottom: 0; }
+
+.draft-tag{
   display: inline-block;
   margin-top: 14px;
   font-family: var(--font-mono);
@@ -139,6 +215,25 @@ section:last-of-type{ border-bottom: none; }
   border: 1px solid var(--rule);
   padding: 3px 8px;
   border-radius: 3px;
+}
+
+/* buttons */
+.btn{
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: var(--signal);
+  background: transparent;
+  border: 1px solid var(--signal-soft);
+  padding: 6px 12px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.btn:hover{ background: var(--paper-raised); }
+.page-actions{
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 28px;
 }
 
 /* experience timeline */
@@ -188,6 +283,7 @@ section:last-of-type{ border-bottom: none; }
   font-size: 12px;
   color: var(--ink-faint);
   white-space: nowrap;
+  margin: 0;
 }
 .role-org{
   color: var(--signal-soft);
@@ -208,32 +304,17 @@ section:last-of-type{ border-bottom: none; }
 }
 .course-list li{ margin-bottom: 3px; }
 
-/* projects */
-.project{
-  padding: 20px 0;
-  border-top: 1px solid var(--rule);
-}
-.project:first-child{ border-top: none; padding-top: 0; }
-.project-title{
-  font-family: var(--font-serif);
-  font-weight: 500;
-  font-size: 19px;
-  margin: 0 0 6px;
-}
-.project-meta{
-  font-family: var(--font-mono);
-  font-size: 12px;
-  color: var(--ink-faint);
-  margin: 0 0 8px;
-}
-.project-desc{
-  margin: 0;
-  color: var(--ink-soft);
-  font-size: 15px;
-  max-width: 58ch;
-}
-
 /* skills */
+.skill-group{ margin-bottom: 22px; }
+.skill-group:last-child{ margin-bottom: 0; }
+.skill-group-label{
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin: 0 0 9px;
+}
 .tags{
   display: flex;
   flex-wrap: wrap;
@@ -248,31 +329,17 @@ section:last-of-type{ border-bottom: none; }
   border-radius: 3px;
 }
 
-/* cta badge in header */
-.cta-badge{
-  display: inline-block;
-  margin-top: 16px;
-  font-family: var(--font-mono);
-  font-size: 12px;
-  letter-spacing: 0.04em;
-  color: var(--signal);
-  border: 1px solid var(--signal-soft);
-  padding: 6px 12px;
-  border-radius: 3px;
-}
-
-/* education / honors */
-.edu-item{
-  margin-bottom: 16px;
-}
+/* education / honors / publications */
+.edu-item{ margin-bottom: 16px; }
 .edu-item:last-child{ margin-bottom: 0; }
 .edu-degree{ font-weight: 600; font-size: 15px; margin: 0; }
 .edu-school{ color: var(--signal-soft); font-size: 14px; margin: 2px 0; }
-.edu-year{ font-family: var(--font-mono); font-size: 12px; color: var(--ink-faint); }
+.edu-year{ font-family: var(--font-mono); font-size: 12px; color: var(--ink-faint); margin: 0; }
 
 .honor-item{
   font-size: 15px;
   color: var(--ink-soft);
+  margin: 0;
 }
 
 .pub-item{
@@ -282,16 +349,13 @@ section:last-of-type{ border-bottom: none; }
   color: var(--ink-soft);
   max-width: 68ch;
   line-height: 1.6;
+  margin: 0;
 }
 .pub-item::before{
   content: "—";
   position: absolute;
   left: 0;
   color: var(--ink-faint);
-}
-.pub-title{
-  font-style: italic;
-  color: var(--ink);
 }
 
 /* contact */
@@ -316,33 +380,26 @@ section:last-of-type{ border-bottom: none; }
   flex-shrink: 0;
 }
 
-footer{
-  padding: 32px 0 60px;
-  font-family: var(--font-mono);
-  font-size: 11px;
-  color: var(--ink-faint);
+/* projects page */
+.project-block-title{
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: 20px;
+  margin: 0 0 8px;
 }
-
-.reveal{
-  opacity: 0;
-  transform: translateY(10px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
+.project-block-desc{
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 15px;
+  max-width: 60ch;
 }
-.reveal.in{
-  opacity: 1;
-  transform: translateY(0);
-}
-@media (prefers-reduced-motion: reduce){
-  .reveal{ opacity: 1; transform: none; transition: none; }
-}
-
-/* project page: figures, placeholders */
 .figure-grid{
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 20px;
   margin-top: 20px;
 }
+.figure-grid figure{ margin: 0; }
 .figure-placeholder{
   border: 1px dashed var(--rule);
   border-radius: 6px;
@@ -375,22 +432,28 @@ footer{
   border-radius: 3px;
   margin-top: 10px;
 }
-.project-block{
-  padding: 28px 0;
-  border-top: 1px solid var(--rule);
+
+footer{
+  padding: 32px 0 60px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--ink-faint);
 }
-.project-block:first-child{ border-top: none; padding-top: 0; }
-.project-block-title{
-  font-family: var(--font-serif);
-  font-weight: 500;
-  font-size: 20px;
-  margin: 0 0 8px;
+
+/* motion — .js-reveal is set by an inline snippet in <head> so the
+   hidden state is painted on the first frame (no flash of content).
+   If main.js fails to load, its onerror removes the class. */
+.js-reveal main section{
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
 }
-.project-block-desc{
-  margin: 0;
-  color: var(--ink-soft);
-  font-size: 15px;
-  max-width: 60ch;
+.js-reveal main section.in{
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce){
+  .js-reveal main section{ opacity: 1; transform: none; transition: none; }
 }
 
 @media (max-width: 480px){
@@ -398,4 +461,52 @@ footer{
   section{ padding: 36px 0; }
   .timeline{ padding-left: 22px; }
   .role::before{ left: -22px; }
+  .contact-row{ flex-direction: column; gap: 2px; }
+  .contact-label{ width: auto; }
+}
+
+/* print — matters most for the CV; also un-hides any section the
+   IntersectionObserver never revealed, which would otherwise print blank */
+@media print{
+  :root{
+    --paper: #FFFFFF;
+    --paper-raised: #FFFFFF;
+    --ink: #000000;
+    --ink-soft: #222222;
+    --ink-faint: #555555;
+    --signal: #000000;
+    --signal-soft: #333333;
+    --rule: #BBBBBB;
+    --tag-bg: #FFFFFF;
+  }
+  @page{ margin: 16mm 14mm; }
+
+  body{ background: #fff; font-size: 11pt; line-height: 1.45; }
+  nav, footer, .skip-link, .page-actions, .draft-tag, .coming-soon,
+  .figure-placeholder, .figure-caption{ display: none !important; }
+
+  .js-reveal main section{
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .wrap{ max-width: none; padding: 0; }
+  header.masthead{ padding: 0 0 14px; }
+  h1{ font-size: 20pt; }
+  .role-line{ font-size: 11.5pt; }
+  section{ padding: 14px 0; border-bottom: none; }
+  .role, .edu-item, .pub-item, .skill-group, .honor-item{
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+  .tag{ border: 1px solid #BBB; }
+
+  a{ color: #000; text-decoration: none; }
+  a[href^="http"]::after{
+    content: " (" attr(href) ")";
+    font-size: 8.5pt;
+    color: #555;
+    word-break: break-all;
+  }
 }
