@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Julie Ji Young Hwang">
+  <rect width="64" height="64" rx="12" fill="#35507A"/>
+  <g fill="#FAF9F5">
+    <rect x="12" y="15" width="3" height="10" rx="1.5"/>
+    <rect x="21" y="15" width="3" height="10" rx="1.5"/>
+    <rect x="28" y="15" width="3" height="10" rx="1.5"/>
+    <rect x="40" y="15" width="3" height="10" rx="1.5"/>
+    <rect x="48" y="15" width="3" height="10" rx="1.5"/>
+
+    <rect x="15" y="27" width="3" height="10" rx="1.5"/>
+    <rect x="24" y="27" width="3" height="10" rx="1.5"/>
+    <rect x="33" y="27" width="3" height="10" rx="1.5"/>
+    <rect x="38" y="27" width="3" height="10" rx="1.5"/>
+    <rect x="50" y="27" width="3" height="10" rx="1.5"/>
+
+    <rect x="11" y="39" width="3" height="10" rx="1.5"/>
+    <rect x="19" y="39" width="3" height="10" rx="1.5"/>
+    <rect x="31" y="39" width="3" height="10" rx="1.5"/>
+    <rect x="42" y="39" width="3" height="10" rx="1.5"/>
+    <rect x="47" y="39" width="3" height="10" rx="1.5"/>
+  </g>
+</svg>

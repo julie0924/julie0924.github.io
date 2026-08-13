@@ -6,14 +6,25 @@
 <title>Julie Ji Young Hwang — Projects</title>
 <meta name="description" content="Projects by Julie Ji Young Hwang, systems neuroscientist and biomedical engineer." />
 <meta name="robots" content="noindex, nofollow" />
+<meta name="theme-color" content="#FAF9F5" media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content="#1A1916" media="(prefers-color-scheme: dark)" />
+<meta property="og:type" content="profile" />
+<meta property="og:title" content="Julie Ji Young Hwang — Projects" />
+<meta property="og:description" content="Thesis, side, and hobby projects by Julie Ji Young Hwang, systems neuroscientist." />
+<meta property="og:url" content="https://julie0924.github.io/projects.html" />
+<link rel="icon" href="favicon.svg" type="image/svg+xml" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+<script>if(!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('js-reveal');</script>
+<script defer src="main.js" onerror="document.documentElement.classList.remove('js-reveal')"></script>
 </head>
 <body>
 
-<nav>
+<a class="skip-link" href="#content">Skip to content</a>
+
+<nav aria-label="Primary">
   <div class="wrap">
     <a href="index.html" class="nav-cross">← Home</a>
     <a href="#thesis">Thesis</a>
@@ -25,6 +36,7 @@
 
 <header class="masthead">
   <div class="wrap">
+    <p class="page-label">Projects</p>
     <h1>Julie Ji Young Hwang</h1>
     <p class="role-line">Systems neuroscientist — social cognition in the primate medial temporal lobe</p>
     <p class="location-line">Baltimore, Maryland, United States</p>
@@ -33,11 +45,11 @@
   </div>
 </header>
 
-<main class="wrap">
+<main class="wrap" id="content">
 
   <section id="thesis">
-    <p class="eyebrow">Thesis project</p>
-    <p class="project-block-title">Social cognition in the primate medial temporal lobe</p>
+    <h2 class="eyebrow">Thesis project</h2>
+    <h3 class="project-block-title">Social cognition in the primate medial temporal lobe</h3>
     <p class="project-block-desc">
       Doctoral research recording from the amygdala and entorhinal cortex while macaques view familiar and
       unfamiliar groupmates, testing how these regions represent social relationships. Figures below are from
@@ -46,24 +58,24 @@
     </p>
 
     <div class="figure-grid">
-      <div>
+      <figure>
         <div class="figure-placeholder">Add figure</div>
-        <p class="figure-caption">e.g., experimental setup or recording schematic</p>
-      </div>
-      <div>
+        <figcaption class="figure-caption">e.g., experimental setup or recording schematic</figcaption>
+      </figure>
+      <figure>
         <div class="figure-placeholder">Add figure</div>
-        <p class="figure-caption">e.g., population geometry / RSA results</p>
-      </div>
-      <div>
+        <figcaption class="figure-caption">e.g., population geometry / RSA results</figcaption>
+      </figure>
+      <figure>
         <div class="figure-placeholder">Add figure</div>
-        <p class="figure-caption">e.g., behavioral coding results</p>
-      </div>
+        <figcaption class="figure-caption">e.g., behavioral coding results</figcaption>
+      </figure>
     </div>
   </section>
 
   <section id="side-project">
-    <p class="eyebrow">Side project</p>
-    <p class="project-block-title">RNN model of social learning</p>
+    <h2 class="eyebrow">Side project</h2>
+    <h3 class="project-block-title">RNN model of social learning</h3>
     <p class="project-block-desc">
       An independent computational neuroscience project applying recurrent neural network models. Write-up in
       progress.
@@ -72,8 +84,8 @@
   </section>
 
   <section id="hobby">
-    <p class="eyebrow">Hobby projects</p>
-    <p class="project-block-title">Video &amp; reel content</p>
+    <h2 class="eyebrow">Hobby projects</h2>
+    <h3 class="project-block-title">Video &amp; reel content</h3>
     <p class="project-block-desc">
       Coming soon.
     </p>
@@ -87,21 +99,6 @@
     <p>&copy; 2026 Julie Ji Young Hwang</p>
   </div>
 </footer>
-
-<script>
-  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    document.querySelectorAll('section').forEach(function(el){ el.classList.add('reveal'); });
-    var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(entry){
-        if (entry.isIntersecting) {
-          entry.target.classList.add('in');
-          io.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
-  }
-</script>
 
 </body>
 </html>
