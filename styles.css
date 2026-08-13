@@ -205,19 +205,6 @@ section[id]{ scroll-margin-top: var(--nav-h); }
 }
 .about-text:last-child{ margin-bottom: 0; }
 
-.draft-tag{
-  display: inline-block;
-  margin-top: 14px;
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--ink-faint);
-  border: 1px solid var(--rule);
-  padding: 3px 8px;
-  border-radius: 3px;
-}
-
 /* buttons */
 .btn{
   font-family: var(--font-mono);
@@ -483,7 +470,7 @@ footer{
   @page{ margin: 16mm 14mm; }
 
   body{ background: #fff; font-size: 11pt; line-height: 1.45; }
-  nav, footer, .skip-link, .page-actions, .draft-tag, .coming-soon,
+  nav, footer, .skip-link, .page-actions, .coming-soon,
   .figure-placeholder, .figure-caption{ display: none !important; }
 
   .js-reveal main section{
