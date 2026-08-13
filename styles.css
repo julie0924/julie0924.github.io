@@ -163,8 +163,9 @@ h1{
 }
 .edu-line a,
 .lab-line a{ color: var(--signal-soft); }
-/* keep the two meta lines as one tight block under the badge */
-.edu-line + .lab-line{ margin-top: 0; }
+/* lines of the same kind stack tight; a new group gets the full margin */
+.edu-line + .edu-line,
+.lab-line + .lab-line{ margin-top: 0; }
 
 /* cta badge in header */
 .cta-badge{
