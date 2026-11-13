@@ -180,6 +180,7 @@ h1{
   border: 1px solid var(--signal-soft);
   padding: 6px 12px;
   border-radius: 3px;
+  text-wrap: balance; /* long enough to wrap — avoid a one-word last line */
 }
 
 section{
