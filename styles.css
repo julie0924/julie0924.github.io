@@ -180,6 +180,7 @@ h1{
   border: 1px solid var(--signal-soft);
   padding: 6px 12px;
   border-radius: 3px;
+  text-wrap: balance; /* long enough to wrap — avoid a one-word last line */
 }
 
 section{
@@ -348,33 +349,33 @@ section[id]{ scroll-margin-top: var(--nav-h); }
   color: var(--ink-faint);
 }
 
-/* contact — icon links. The address lives in title/aria-label/data-label so it
-   is still available on hover, to screen readers, and in print. */
-.social-links{
+/* contact — icon plus the address as readable text, so it can be copied
+   without clicking and still reads correctly on paper. */
+.contact-links{
+  list-style: none;
+  margin: 0;
+  padding: 0;
   display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.contact-links a{
+  display: inline-flex;
   align-items: center;
   gap: 10px;
-  margin-left: -7px; /* cancel the first icon's padding so it aligns with the text above */
-}
-.social-links a{
-  display: inline-flex;
-  padding: 7px;
-  border-radius: 3px;
-  color: var(--ink-soft);
-  transition: color 0.2s ease, background 0.2s ease;
-}
-.social-links a:hover{
+  font-size: 15px;
   color: var(--signal);
-  background: var(--paper-raised);
-  text-decoration: none;
 }
-.social-links svg{
-  width: 20px;
-  height: 20px;
-  display: block;
+.contact-links svg{
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  color: var(--ink-faint);
+  transition: color 0.2s ease;
 }
+.contact-links a:hover svg{ color: var(--signal); }
 @media (prefers-reduced-motion: reduce){
-  .social-links a{ transition: none; }
+  .contact-links svg{ transition: none; }
 }
 
 /* projects page */
@@ -497,10 +498,8 @@ footer{
   }
   .tag{ border: 1px solid #BBB; }
 
-  /* icons alone are useless on paper — print the address beside each one */
-  .social-links{ gap: 20px; }
-  .social-links a::after{ content: attr(data-label); font-size: 10pt; margin-left: 7px; }
-  .social-links a[href^="http"]::after{ content: attr(data-label); }
+  /* the address is already visible text here — don't repeat it in brackets */
+  .contact-links a::after{ content: none !important; }
 
   a{ color: #000; text-decoration: none; }
   a[href^="http"]::after{
