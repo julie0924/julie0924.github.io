@@ -21,7 +21,7 @@
   --font-sans: 'IBM Plex Sans', -apple-system, sans-serif;
   --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
   --maxw: 700px;
-  --nav-h: 76px;
+  --nav-h: 84px; /* two-row nav; see the mobile override where the rows wrap */
 }
 
 @media (prefers-color-scheme: dark){
@@ -85,7 +85,8 @@ a:focus-visible, button:focus-visible{
   text-decoration: none;
 }
 
-/* nav */
+/* nav — two rows, so the two kinds of link never look alike.
+   Row 1 goes to another page; row 2 jumps down the page you are on. */
 nav{
   position: sticky;
   top: 0;
@@ -96,20 +97,48 @@ nav{
 }
 nav .wrap{
   display: flex;
-  flex-wrap: wrap;
-  gap: 4px 18px;
-  padding-top: 14px;
-  padding-bottom: 14px;
+  flex-direction: column;
+  gap: 7px;
+  padding-top: 12px;
+  padding-bottom: 12px;
 }
-nav a{
+
+/* row 1 — other pages */
+.nav-pages{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 20px;
+}
+.nav-pages a{
   font-family: var(--font-mono);
   font-size: 12px;
+  font-weight: 500;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--ink-soft);
+  padding-bottom: 2px;
+  border-bottom: 1.5px solid transparent;
 }
-nav a:hover{ color: var(--signal); text-decoration: none; }
-nav a.nav-cross{ color: var(--signal); }
+.nav-pages a:hover{ color: var(--signal); text-decoration: none; }
+.nav-pages a[aria-current="page"]{
+  color: var(--signal);
+  border-bottom-color: var(--signal);
+}
+
+/* row 2 — sections of the current page */
+.nav-sections{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px 16px;
+}
+.nav-sections a{
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  letter-spacing: 0.03em;
+  text-transform: lowercase;
+  color: var(--ink-faint);
+}
+.nav-sections a:hover{ color: var(--signal); text-decoration: none; }
 
 /* header / masthead */
 header.masthead{
@@ -455,6 +484,7 @@ footer{
 }
 
 @media (max-width: 480px){
+  :root{ --nav-h: 104px; } /* nav rows wrap below ~420px, growing it to ~95px */
   header.masthead{ padding: 48px 0 32px; }
   section{ padding: 36px 0; }
   .timeline{ padding-left: 22px; }
