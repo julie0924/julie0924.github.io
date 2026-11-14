@@ -220,8 +220,6 @@ h1{
 }
 .meta-line:first-child{ margin-top: 0; }
 .meta-line a{ color: var(--signal-soft); }
-/* first line of a new group */
-.meta-line--group{ margin-top: 22px; }
 
 /* cta badge in header */
 .cta-badge{
