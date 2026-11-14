@@ -226,7 +226,10 @@ h1{
    container so the column gap on .masthead .wrap applies around the block
    rather than between every line — the margins below are then the only
    thing controlling grouping. */
-.masthead-meta{ margin-top: 8px; }
+/* Degrees and lab affiliations. These sit at the top of the page body rather
+   than inside the masthead, so the masthead stays to name, title and intent. */
+.affiliations{ padding-top: 40px; }
+.affiliations + section{ padding-top: 34px; }
 .meta-line{
   font-size: 14px;
   color: var(--ink-soft);
