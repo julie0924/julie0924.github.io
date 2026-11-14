@@ -27,10 +27,4 @@
       root.classList.remove('js-reveal');
     }
   }
-
-  /* Print buttons ship hidden because they do nothing without JS. */
-  document.querySelectorAll('[data-print]').forEach(function (btn) {
-    btn.hidden = false;
-    btn.addEventListener('click', function () { window.print(); });
-  });
 }());

@@ -237,25 +237,6 @@ section[id]{ scroll-margin-top: var(--nav-h); }
 }
 .about-text:last-child{ margin-bottom: 0; }
 
-/* buttons */
-.btn{
-  font-family: var(--font-mono);
-  font-size: 12px;
-  letter-spacing: 0.04em;
-  color: var(--signal);
-  background: transparent;
-  border: 1px solid var(--signal-soft);
-  padding: 6px 12px;
-  border-radius: 3px;
-  cursor: pointer;
-}
-.btn:hover{ background: var(--paper-raised); }
-.page-actions{
-  display: flex;
-  justify-content: flex-end;
-  padding-top: 28px;
-}
-
 /* experience timeline */
 .timeline{
   position: relative;
@@ -512,7 +493,7 @@ footer{
   @page{ margin: 16mm 14mm; }
 
   body{ background: #fff; font-size: 11pt; line-height: 1.45; }
-  nav, footer, .skip-link, .page-actions, .coming-soon,
+  nav, footer, .skip-link, .coming-soon,
   .figure-placeholder, .figure-caption{ display: none !important; }
 
   .js-reveal main section{
