@@ -375,6 +375,7 @@ section[id]{ scroll-margin-top: var(--nav-h); }
   line-height: 1.6;
   margin: 0;
 }
+.pub-item + .pub-item{ margin-top: 14px; }
 .pub-item::before{
   content: "—";
   position: absolute;
