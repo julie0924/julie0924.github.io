@@ -150,6 +150,46 @@ header.masthead .wrap{
   flex-direction: column;
   gap: 6px;
 }
+/* Masthead with a portrait: the photo sits beside the name block only, so the
+   longer lines below it (badge, degrees, labs) still run the full column. */
+.masthead-top{
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+.masthead-id{
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0; /* let the name wrap rather than push the photo off the edge */
+}
+.masthead-photo{
+  width: 150px;
+  height: 150px;
+  flex-shrink: 0;
+  margin-left: auto;
+  border-radius: 50%;
+  overflow: hidden;
+  /* placeholder dressing — drop the dashes and the background once a real
+     image sits inside */
+  border: 1px dashed var(--rule);
+  background: var(--paper-raised);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+.masthead-photo img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
 .page-label{
   font-family: var(--font-mono);
   font-size: 12px;
@@ -489,6 +529,16 @@ main.wrap{ padding-bottom: 72px; }
    74px at 700px+, 95px from 420-680px, 116px at 400px and below. */
 @media (max-width: 690px){ :root{ --nav-h: 106px; } }
 @media (max-width: 410px){ :root{ --nav-h: 128px; } }
+
+/* stack the portrait above the name once the two no longer fit side by side */
+@media (max-width: 560px){
+  .masthead-top{
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    gap: 20px;
+  }
+  .masthead-photo{ width: 120px; height: 120px; margin-left: 0; }
+}
 
 @media (max-width: 480px){
   header.masthead{ padding: 48px 0 32px; }
