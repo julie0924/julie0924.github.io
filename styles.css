@@ -465,12 +465,8 @@ section[id]{ scroll-margin-top: var(--nav-h); }
   margin-top: 10px;
 }
 
-footer{
-  padding: 32px 0 60px;
-  font-family: var(--font-mono);
-  font-size: 11px;
-  color: var(--ink-faint);
-}
+/* the footer used to supply the page's bottom breathing room */
+main.wrap{ padding-bottom: 72px; }
 
 /* motion — .js-reveal is set by an inline snippet in <head> so the
    hidden state is painted on the first frame (no flash of content).
@@ -518,7 +514,7 @@ footer{
   @page{ margin: 16mm 14mm; }
 
   body{ background: #fff; font-size: 11pt; line-height: 1.45; }
-  nav, footer, .skip-link, .coming-soon,
+  nav, .skip-link, .coming-soon,
   .figure-placeholder, .figure-caption{ display: none !important; }
 
   .js-reveal main section{
