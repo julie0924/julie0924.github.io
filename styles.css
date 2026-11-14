@@ -362,6 +362,10 @@ section[id]{ scroll-margin-top: var(--nav-h); }
   margin: 0;
 }
 
+/* leadership / service — reuses the role header layout without the timeline */
+.service-item{ margin-bottom: 22px; }
+.service-item:last-child{ margin-bottom: 0; }
+
 .pub-item{
   padding-left: 20px;
   position: relative;
@@ -522,7 +526,7 @@ footer{
   h1{ font-size: 20pt; }
   .role-line{ font-size: 11.5pt; }
   section{ padding: 14px 0; border-bottom: none; }
-  .role, .edu-item, .pub-item, .skill-group, .honor-item{
+  .role, .edu-item, .pub-item, .skill-group, .honor-item, .service-item{
     page-break-inside: avoid;
     break-inside: avoid;
   }
