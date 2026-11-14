@@ -21,7 +21,7 @@
   --font-sans: 'IBM Plex Sans', -apple-system, sans-serif;
   --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
   --maxw: 700px;
-  --nav-h: 84px; /* two-row nav; see the mobile override where the rows wrap */
+  --nav-h: 84px; /* two-row nav; the overrides below cover the widths where its rows wrap */
 }
 
 @media (prefers-color-scheme: dark){
@@ -150,6 +150,30 @@ header.masthead .wrap{
   flex-direction: column;
   gap: 6px;
 }
+/* Masthead with a portrait: the photo sits beside the name block only, so the
+   longer lines below it (badge, degrees, labs) still run the full column. */
+.masthead-top{
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+.masthead-id{
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0; /* let the name wrap rather than push the photo off the edge */
+}
+.masthead-photo{
+  width: 150px;
+  height: 150px;
+  flex-shrink: 0;
+  margin-left: auto;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  background: var(--paper-raised); /* holds the circle while the file loads */
+}
+
 .page-label{
   font-family: var(--font-mono);
   font-size: 12px;
@@ -186,7 +210,8 @@ h1{
    container so the column gap on .masthead .wrap applies around the block
    rather than between every line — the margins below are then the only
    thing controlling grouping. */
-.masthead-meta{ margin-top: 8px; }
+/* Degrees and lab affiliations, closing the About Me section. */
+.affiliations{ margin-top: 26px; }
 .meta-line{
   font-size: 14px;
   color: var(--ink-soft);
@@ -195,8 +220,6 @@ h1{
 }
 .meta-line:first-child{ margin-top: 0; }
 .meta-line a{ color: var(--signal-soft); }
-/* first line of a new group */
-.meta-line--group{ margin-top: 22px; }
 
 /* cta badge in header */
 .cta-badge{
@@ -227,6 +250,25 @@ section[id]{ scroll-margin-top: var(--nav-h); }
   text-transform: uppercase;
   color: var(--ink-faint);
   margin: 0 0 20px;
+}
+
+/* numbered section heads (CV) — the number is a real sequence the reader
+   can refer to, so it is markup, not a ::before counter they cannot select */
+.section-head{ margin: 0 0 22px; }
+.section-num{
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  color: var(--signal-soft);
+  margin: 0 0 4px;
+}
+.section-title{
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: 21px;
+  line-height: 1.2;
+  color: var(--ink);
+  margin: 0;
 }
 
 .about-text{
@@ -356,6 +398,7 @@ section[id]{ scroll-margin-top: var(--nav-h); }
   line-height: 1.6;
   margin: 0;
 }
+.pub-item + .pub-item{ margin-top: 14px; }
 .pub-item::before{
   content: "—";
   position: absolute;
@@ -399,38 +442,52 @@ section[id]{ scroll-margin-top: var(--nav-h); }
   font-size: 20px;
   margin: 0 0 8px;
 }
+/* the research question that opens a project, set apart from the prose */
+.project-lede{
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 18px;
+  line-height: 1.45;
+  color: var(--signal);
+  max-width: 54ch;
+  margin: 0 0 16px;
+  text-wrap: balance;
+}
 .project-block-desc{
   margin: 0;
   color: var(--ink-soft);
   font-size: 15px;
   max-width: 60ch;
 }
-.figure-grid{
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 20px;
-  margin-top: 20px;
+.project-block-desc + .project-block-desc{ margin-top: 14px; }
+/* a full-width figure; the image links to itself so the detail can be read */
+.project-figure{
+  margin: 26px 0 0;
 }
-.figure-grid figure{ margin: 0; }
-.figure-placeholder{
-  border: 1px dashed var(--rule);
-  border-radius: 6px;
-  aspect-ratio: 4 / 3;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--paper-raised);
-  color: var(--ink-faint);
-  font-family: var(--font-mono);
-  font-size: 12px;
-  text-align: center;
-  padding: 16px;
+/* This figure is a 2x2 grid of 33x33 matrices and is unreadable at the 652px
+   text measure, so on wide screens let it break out of the column. */
+@media (min-width: 1180px){
+  .project-figure{
+    width: 1080px;
+    margin-left: calc((652px - 1080px) / 2);
+  }
+  .project-figure .figure-caption{ margin-left: calc((1080px - 652px) / 2); }
 }
+.project-figure img{
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  background: #FFFFFF; /* the plots are drawn on white, keep that in dark mode */
+}
+.project-figure a:hover img{ border-color: var(--signal-soft); }
 .figure-caption{
   font-size: 13px;
   color: var(--ink-faint);
   margin-top: 8px;
   font-style: italic;
+  max-width: 68ch;
 }
 .coming-soon{
   display: inline-block;
@@ -445,12 +502,8 @@ section[id]{ scroll-margin-top: var(--nav-h); }
   margin-top: 10px;
 }
 
-footer{
-  padding: 32px 0 60px;
-  font-family: var(--font-mono);
-  font-size: 11px;
-  color: var(--ink-faint);
-}
+/* the footer used to supply the page's bottom breathing room */
+main.wrap{ padding-bottom: 72px; }
 
 /* motion — .js-reveal is set by an inline snippet in <head> so the
    hidden state is painted on the first frame (no flash of content).
@@ -468,8 +521,23 @@ footer{
   .js-reveal main section{ opacity: 1; transform: none; transition: none; }
 }
 
+/* The nav's two rows wrap as the viewport narrows, so anchor targets need a
+   bigger offset to clear it. Measured tallest nav across all three pages:
+   74px at 700px+, 95px from 420-680px, 116px at 400px and below. */
+@media (max-width: 690px){ :root{ --nav-h: 106px; } }
+@media (max-width: 410px){ :root{ --nav-h: 128px; } }
+
+/* stack the portrait above the name once the two no longer fit side by side */
+@media (max-width: 560px){
+  .masthead-top{
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    gap: 20px;
+  }
+  .masthead-photo{ width: 120px; height: 120px; margin-left: 0; }
+}
+
 @media (max-width: 480px){
-  :root{ --nav-h: 104px; } /* nav rows wrap below ~420px, growing it to ~95px */
   header.masthead{ padding: 48px 0 32px; }
   section{ padding: 36px 0; }
   .timeline{ padding-left: 22px; }
@@ -493,8 +561,8 @@ footer{
   @page{ margin: 16mm 14mm; }
 
   body{ background: #fff; font-size: 11pt; line-height: 1.45; }
-  nav, footer, .skip-link, .coming-soon,
-  .figure-placeholder, .figure-caption{ display: none !important; }
+  nav, .skip-link, .coming-soon{ display: none !important; }
+  .project-figure{ page-break-inside: avoid; break-inside: avoid; }
 
   .js-reveal main section{
     opacity: 1 !important;
@@ -511,6 +579,8 @@ footer{
     page-break-inside: avoid;
     break-inside: avoid;
   }
+  .section-head{ page-break-after: avoid; break-after: avoid; }
+  .section-title{ font-size: 13pt; }
   .tag{ border: 1px solid #BBB; }
 
   /* the address is already visible text here — don't repeat it in brackets */
