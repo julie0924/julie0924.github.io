@@ -21,7 +21,7 @@
   --font-sans: 'IBM Plex Sans', -apple-system, sans-serif;
   --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
   --maxw: 700px;
-  --nav-h: 76px;
+  --nav-h: 84px; /* two-row nav; see the mobile override where the rows wrap */
 }
 
 @media (prefers-color-scheme: dark){
@@ -85,7 +85,8 @@ a:focus-visible, button:focus-visible{
   text-decoration: none;
 }
 
-/* nav */
+/* nav — two rows, so the two kinds of link never look alike.
+   Row 1 goes to another page; row 2 jumps down the page you are on. */
 nav{
   position: sticky;
   top: 0;
@@ -96,20 +97,48 @@ nav{
 }
 nav .wrap{
   display: flex;
-  flex-wrap: wrap;
-  gap: 4px 18px;
-  padding-top: 14px;
-  padding-bottom: 14px;
+  flex-direction: column;
+  gap: 7px;
+  padding-top: 12px;
+  padding-bottom: 12px;
 }
-nav a{
+
+/* row 1 — other pages */
+.nav-pages{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 20px;
+}
+.nav-pages a{
   font-family: var(--font-mono);
   font-size: 12px;
+  font-weight: 500;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--ink-soft);
+  padding-bottom: 2px;
+  border-bottom: 1.5px solid transparent;
 }
-nav a:hover{ color: var(--signal); text-decoration: none; }
-nav a.nav-cross{ color: var(--signal); }
+.nav-pages a:hover{ color: var(--signal); text-decoration: none; }
+.nav-pages a[aria-current="page"]{
+  color: var(--signal);
+  border-bottom-color: var(--signal);
+}
+
+/* row 2 — sections of the current page */
+.nav-sections{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px 16px;
+}
+.nav-sections a{
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  letter-spacing: 0.03em;
+  text-transform: lowercase;
+  color: var(--ink-faint);
+}
+.nav-sections a:hover{ color: var(--signal); text-decoration: none; }
 
 /* header / masthead */
 header.masthead{
@@ -207,25 +236,6 @@ section[id]{ scroll-margin-top: var(--nav-h); }
   margin: 0 0 18px;
 }
 .about-text:last-child{ margin-bottom: 0; }
-
-/* buttons */
-.btn{
-  font-family: var(--font-mono);
-  font-size: 12px;
-  letter-spacing: 0.04em;
-  color: var(--signal);
-  background: transparent;
-  border: 1px solid var(--signal-soft);
-  padding: 6px 12px;
-  border-radius: 3px;
-  cursor: pointer;
-}
-.btn:hover{ background: var(--paper-raised); }
-.page-actions{
-  display: flex;
-  justify-content: flex-end;
-  padding-top: 28px;
-}
 
 /* experience timeline */
 .timeline{
@@ -332,6 +342,10 @@ section[id]{ scroll-margin-top: var(--nav-h); }
   color: var(--ink-soft);
   margin: 0;
 }
+
+/* leadership / service — reuses the role header layout without the timeline */
+.service-item{ margin-bottom: 22px; }
+.service-item:last-child{ margin-bottom: 0; }
 
 .pub-item{
   padding-left: 20px;
@@ -455,6 +469,7 @@ footer{
 }
 
 @media (max-width: 480px){
+  :root{ --nav-h: 104px; } /* nav rows wrap below ~420px, growing it to ~95px */
   header.masthead{ padding: 48px 0 32px; }
   section{ padding: 36px 0; }
   .timeline{ padding-left: 22px; }
@@ -478,7 +493,7 @@ footer{
   @page{ margin: 16mm 14mm; }
 
   body{ background: #fff; font-size: 11pt; line-height: 1.45; }
-  nav, footer, .skip-link, .page-actions, .coming-soon,
+  nav, footer, .skip-link, .coming-soon,
   .figure-placeholder, .figure-caption{ display: none !important; }
 
   .js-reveal main section{
@@ -492,7 +507,7 @@ footer{
   h1{ font-size: 20pt; }
   .role-line{ font-size: 11.5pt; }
   section{ padding: 14px 0; border-bottom: none; }
-  .role, .edu-item, .pub-item, .skill-group, .honor-item{
+  .role, .edu-item, .pub-item, .skill-group, .honor-item, .service-item{
     page-break-inside: avoid;
     break-inside: avoid;
   }

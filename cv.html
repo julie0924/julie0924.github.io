@@ -26,13 +26,19 @@
 
 <nav aria-label="Primary">
   <div class="wrap">
-    <a href="index.html" class="nav-cross">← Home</a>
-    <a href="#experience">Experience</a>
-    <a href="#education">Education</a>
-    <a href="#skills">Skills</a>
-    <a href="#honors">Honors</a>
-    <a href="#publications">Publications</a>
-    <a href="projects.html" class="nav-cross">Projects →</a>
+    <div class="nav-pages">
+      <a href="index.html">Home</a>
+      <a href="projects.html">Projects</a>
+      <a href="cv.html" aria-current="page">CV</a>
+    </div>
+    <div class="nav-sections">
+      <a href="#experience">Experience</a>
+      <a href="#education">Education</a>
+      <a href="#skills">Skills</a>
+      <a href="#honors">Honors</a>
+      <a href="#leadership">Leadership</a>
+      <a href="#publications">Publications</a>
+    </div>
   </div>
 </nav>
 
@@ -40,9 +46,9 @@
   <div class="wrap">
     <p class="page-label">Curriculum Vitae</p>
     <h1>Julie Ji Young Hwang</h1>
-    <p class="role-line">PhD Candidate | Systems Neuroscience</p>
+    <p class="role-line">PhD Candidate | Systems Neuroscientist</p>
     <p class="location-line">Baltimore, Maryland, United States</p>
-    <span class="cta-badge">Seeking computational neuroscience postdoctoral opportunities in learning and memory</span>
+    <span class="cta-badge">Seeking postdoctoral opportunities in computational neuroscience and neural population dynamics</span>
     <div class="masthead-meta">
       <p class="meta-line">PhD Lab: <a href="https://krieger.jhu.edu/mbi/directory/ed-connor/" target="_blank" rel="noopener">Ed Connor's lab</a>, School of Medicine, Zanvyl Krieger Mind/Brain Institute (MBI), JHU</p>
       <p class="meta-line">Master's Lab: <a href="https://me.jhu.edu/thwang/" target="_blank" rel="noopener">BioMEMS &amp; Single Molecule Dynamics Lab</a>, Whiting School of Engineering, Institute for NanoBioTechnology (INBT), JHU</p>
@@ -51,10 +57,6 @@
 </header>
 
 <main class="wrap" id="content">
-
-  <div class="page-actions">
-    <button type="button" class="btn" data-print hidden>Print / Save as PDF</button>
-  </div>
 
   <section id="experience">
     <h2 class="eyebrow">Experience</h2>
@@ -66,8 +68,8 @@
           <p class="role-dates">Aug 2020 — Present</p>
         </div>
         <p class="role-org">The Johns Hopkins University School of Medicine · Zanvyl Krieger Mind/Brain Institute</p>
-        <p class="role-detail">Recording from amygdala and entorhinal cortex while macaques view familiar and unfamiliar groupmates.</p>
-        <p class="role-detail">Applying population-level decoding and representational similarity analysis to test how social relationships shape neural representations.</p>
+        <p class="role-detail">Record single-neuron activity from the amygdala and entorhinal cortex of rhesus macaques during passive viewing of familiar and unfamiliar conspecifics.</p>
+        <p class="role-detail">Apply neural population analyses, including state-space analysis and representational similarity analysis (RSA), to investigate how social familiarity and relationships are reflected in neural representations.</p>
       </div>
 
       <div class="role">
@@ -90,7 +92,8 @@
           <p class="role-dates">Jan 2019 — May 2020</p>
         </div>
         <p class="role-org">Johns Hopkins Whiting School of Engineering · BioMEMS &amp; Single Molecule Dynamics Lab</p>
-        <p class="role-detail">Developed a portable multiplex PCR machine.</p>
+        <p class="role-detail">Designed and prototyped magnetofluidic sample-splitting and PCR thermocycling systems for a portable, multiplex molecular diagnostic platform.</p>
+        <p class="role-detail">Developed Arduino/Raspberry Pi-based instrument controls and Python image-processing algorithms for fluorescence-based PCR detection and analysis.</p>
       </div>
 
       <div class="role">
@@ -131,27 +134,30 @@
     <h2 class="eyebrow">Skills</h2>
 
     <div class="skill-group">
-      <p class="skill-group-label">Experimental</p>
+      <p class="skill-group-label">Experimental Neuroscience</p>
       <div class="tags">
-        <span class="tag">Extracellular electrophysiology</span>
+        <span class="tag">Non-human primate electrophysiology</span>
+        <span class="tag">Behavioral ethology</span>
+        <span class="tag">Neural data acquisition</span>
       </div>
     </div>
 
     <div class="skill-group">
-      <p class="skill-group-label">Analysis &amp; modeling</p>
+      <p class="skill-group-label">Neural Data Analysis</p>
       <div class="tags">
-        <span class="tag">Population / state-space decoding</span>
-        <span class="tag">Representational similarity analysis</span>
-        <span class="tag">Procrustes alignment</span>
+        <span class="tag">Neural population analysis</span>
+        <span class="tag">Representational similarity analysis (RSA)</span>
+        <span class="tag">State-space analysis</span>
+        <span class="tag">Dimensionality reduction (PCA)</span>
+        <span class="tag">Procrustes analysis</span>
+        <span class="tag">Regression &amp; GLMs</span>
+        <span class="tag">Permutation testing</span>
       </div>
     </div>
 
     <div class="skill-group">
       <p class="skill-group-label">Spike sorting</p>
       <div class="tags">
-        <span class="tag">Kilosort4</span>
-        <span class="tag">MountainSort5</span>
-        <span class="tag">Tridesclous</span>
         <span class="tag">SpikeInterface</span>
       </div>
     </div>
@@ -161,6 +167,9 @@
       <div class="tags">
         <span class="tag">Python</span>
         <span class="tag">Java</span>
+        <span class="tag">Linux</span>
+        <span class="tag">Jupyter</span>
+        <span class="tag">Git</span>
       </div>
     </div>
   </section>
@@ -168,6 +177,26 @@
   <section id="honors">
     <h2 class="eyebrow">Honors</h2>
     <p class="honor-item">Kavli Neuroscience Discovery Institute Distinguished Graduate Student Fellow</p>
+  </section>
+
+  <section id="leadership">
+    <h2 class="eyebrow">Leadership</h2>
+
+    <div class="service-item">
+      <div class="role-header">
+        <h3 class="role-title">Translational Neuroengineering Technologies (TNT) Network</h3>
+        <p class="role-dates">Nov 2021 — May 2023</p>
+      </div>
+      <p class="role-org">Social Media Chair · The Johns Hopkins University School of Medicine</p>
+    </div>
+
+    <div class="service-item">
+      <div class="role-header">
+        <h3 class="role-title">Korean Graduate Student Association (KGSA)</h3>
+        <p class="role-dates">Jun 2019 — May 2021</p>
+      </div>
+      <p class="role-org">President (2020–2021) · The Johns Hopkins University School of Medicine</p>
+    </div>
   </section>
 
   <section id="publications">
